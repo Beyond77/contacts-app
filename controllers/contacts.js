@@ -1,10 +1,12 @@
 const { response } = require("express");
-const { trusted } = require("mongoose");
 const Contacto = require("../models/Contacto");
+const Usuario = require("../models/Usuario");
 
 const getContactos = async ( req, res = response ) => {
 
-    const contactos = await Contacto.find().populate("user", "name");
+    const usuario = await Usuario.findById(req.uid);
+
+    const contactos = await Contacto.find({user: usuario._id});
 
     return res.status(200).json({
         ok: true,

@@ -5,7 +5,6 @@ const ContactoSchema = Schema({
         type: String,
         required: true
     },
-
     number: {
         type: String,
         required: true,
